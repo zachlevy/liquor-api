@@ -11,6 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150918214138) do
+
+  create_table "store_classes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.integer  "number"
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "province"
+    t.string   "postal_code"
+    t.string   "phone"
+    t.string   "fax"
+    t.boolean  "dead"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.integer  "store_class_id"
+    t.datetime "lcbo_updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "stores", ["store_class_id"], name: "index_stores_on_store_class_id"
 
 end
