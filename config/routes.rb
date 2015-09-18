@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :inventories, except: [:new, :edit]
   resources :products, except: [:new, :edit]
   resources :stores, except: [:new, :edit]
   resources :store_classes, except: [:new, :edit]
