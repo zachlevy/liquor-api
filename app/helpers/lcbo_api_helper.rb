@@ -6,7 +6,7 @@ require 'open-uri'
 # per_page is default 100
 # page is integer
 # params is array like ["store_id=20", ...]
-def get_lcbo_api resource, page=1, per_page=100, params=[]
+def get_lcbo_api resource, params=[], page=1, per_page=100
   url = "http://lcboapi.com/#{resource}?per_page=#{per_page}"
   url << "&page=#{page}" unless page.nil?
   params.each { |param| url << "&#{param}" }
@@ -19,16 +19,17 @@ def get_lcbo_api resource, page=1, per_page=100, params=[]
 end
 
 # get paged lcbo resources and stitch them together
-def get_lcbo_api_all resource
+def get_lcbo_api_all resource, params=[]
   all_responses = []
   next_page = 1
   loop do
-    response = get_lcbo_api resource, next_page
+    response = get_lcbo_api resource, params, next_page
     # add the current result to all the other results
-    response['result'].each { |dataset| all_responses.push(*response['result']) }
+    all_responses.push(*response['result'])
     # get the next page
     next_page = response["pager"]["next_page"]
     break if response["pager"]["is_final_page"].nil? or response["pager"]["is_final_page"]
   end
+  puts all_responses.size
   all_responses
 end

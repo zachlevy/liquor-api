@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 puts "seeds.rb"
+
+# create stores
 Store.refresh_all
 
 # create store classes, these are not from the lcbo api
@@ -30,3 +32,14 @@ store_classes_store_ids.each do |sc|
   s.store_class = c
   s.save
 end
+
+# starter products
+products = Product.create([
+  {
+    number: 407148,
+    name: "Crazy Beard Apple Ale",
+    case_size: 24
+  }
+])
+
+Product.all.each { |product| product.update_inventory }
