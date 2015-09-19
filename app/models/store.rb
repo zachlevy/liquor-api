@@ -10,7 +10,7 @@ class Store < ActiveRecord::Base
 
   # check for existing store and create if not
   def self.refresh_all
-    response = get_lcbo_api_all "stores"
+    response = LcboApiHelper.get_all "stores"
     response.each do |store|
       s = Store.create_with(
         name: store["name"].to_s,

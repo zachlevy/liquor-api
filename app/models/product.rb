@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
 
   # check for existing inventory and create if not
   def update_inventory
-    response = get_lcbo_api_all "inventories", ["product_id=#{number}", "where_not=is_dead"]
+    response = LcboApiHelper.get_all "inventories", ["product_id=#{number}", "where_not=is_dead"]
 
     response.each do |inventory|
       lcbo_updated_on = inventory["updated_on"].to_date
