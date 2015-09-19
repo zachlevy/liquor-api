@@ -43,6 +43,11 @@ GEM
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     geocoder (1.2.8)
     geokit (1.10.0)
     geokit-rails (2.1.0)
@@ -144,6 +149,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  factory_girl_rails
   geocoder
   geokit-rails
   pry-rails
