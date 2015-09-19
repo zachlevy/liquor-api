@@ -7,7 +7,7 @@ class Inventory < ActiveRecord::Base
   validates :quantity, presence: true
   validates :lcbo_updated_on, presence: true
 
-  after_update :calc_sales
+  before_create :calc_sales
 
   # gets the last inventory before the current inventory
   # days ago offsets
@@ -16,6 +16,7 @@ class Inventory < ActiveRecord::Base
   end
 
   # calculates sales and shipments
+  # only used for before_create, won't recalculate sales
   def calc_sales
     historic = self.previous
     return if historic.nil?
@@ -25,6 +26,7 @@ class Inventory < ActiveRecord::Base
       sales = historic.quantity - quantity + shipment
       shipment += product.case_size unless sales >= 0
     end
-    self.update_attributes(:sales => sales, :shipment => shipment)
+    self.sales = sales
+    self.shipment = shipment
   end
 end
