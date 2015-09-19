@@ -4,6 +4,8 @@ class Store < ActiveRecord::Base
   has_many :inventories
   acts_as_mappable
 
+  validates :number, presence: true
+
   # check for existing store and create if not
   def self.refresh_all
     response = get_lcbo_api_all "stores"
