@@ -1,9 +1,10 @@
 class Store < ActiveRecord::Base
   require_relative '../helpers/lcbo_api_helper'
   belongs_to :store_class
+  has_many :inventories
   acts_as_mappable
 
-  # check existing stores and update if not
+  # check for existing store and create if not
   def self.refresh_all
     response = get_lcbo_api_all "stores"
     response.each do |store|

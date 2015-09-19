@@ -10,7 +10,7 @@ def get_lcbo_api resource, page=1, per_page=100, params=[]
   url = "http://lcboapi.com/#{resource}?per_page=#{per_page}"
   url << "&page=#{page}" unless page.nil?
   params.each { |param| url << "&#{param}" }
-  # puts url
+  puts url
   res = open(
     url,
     'Authorization' => "Token MDozNDczNzBhNC01ZTUzLTExZTUtYTg2Zi0zN2QyMTEzM2QzMTc6enVBTzRzempEQTBzS2Q5RXlXRFhBRWF2bmhDd0hzbmVsRzRS"
