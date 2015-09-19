@@ -6,6 +6,8 @@ class Store < ActiveRecord::Base
 
   validates :number, presence: true
 
+  default_scope { where(:dead => false) }
+
   # check for existing store and create if not
   def self.refresh_all
     response = get_lcbo_api_all "stores"
