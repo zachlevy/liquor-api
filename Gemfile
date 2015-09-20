@@ -8,6 +8,7 @@ gem 'pg'
 gem 'geocoder'
 gem 'geokit-rails'
 gem 'rest-client'
+gem 'groupdate'
 
 group :development, :test do
   gem 'rspec-rails'
