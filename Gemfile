@@ -33,3 +33,6 @@ end
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+# heroku
+gem 'rails_12factor', group: :production
