@@ -5,15 +5,23 @@ RSpec.describe Inventory, type: :model do
     expect(build(:inventory)).to be_valid
   end
 
-  it "doesn't build inventories missing a store" do
+  it "validates store" do
     expect(build(:inventory, :store => nil)).not_to be_valid
   end
 
-  it "doesn't build inventories missing a product" do
+  it "validates product" do
     expect(build(:inventory, :product => nil)).not_to be_valid
   end
 
-  it "calculates all sales and shipments" do
+  it "validates quantity" do
+    expect(build(:inventory, :quantity => nil)).not_to be_valid
+  end
+
+  it "validates lcbo_updated_on" do
+    expect(build(:inventory, :lcbo_updated_on => nil)).not_to be_valid
+  end
+
+  it "calculates all sales and shipments combinations" do
     store = create(:store)
     product = create(:product)
 

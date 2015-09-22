@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   require_relative '../helpers/application_helper'
   has_many :inventories
 
-  validates :number, presence: true
+  validates_uniqueness_of :number
   validates :case_size, presence: true
 
   # check for existing inventory and create if not
