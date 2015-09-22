@@ -35,6 +35,7 @@ RSpec.describe Inventory, type: :model do
     inv1 = create(:inventory, :store => store, :product => product)
     create(:inventory, :store => store, :product => product, :lcbo_updated_on => "2014-01-01") # junk
     inv2 = create(:inventory, :store => store, :product => product)
+    expect(inv2.previous).to eq(inv1)
   end
 
   it "calculates all sales and shipments combinations" do
