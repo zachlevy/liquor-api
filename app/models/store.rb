@@ -4,7 +4,7 @@ class Store < ActiveRecord::Base
   has_many :inventories
   acts_as_mappable
 
-  validates :number, presence: true
+  validates_uniqueness_of :number
 
   default_scope { where(:dead => false) }
 
