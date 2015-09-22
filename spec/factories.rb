@@ -8,7 +8,7 @@ FactoryGirl.define do
 
   # simplest store
   factory :store do
-    number 123
+    sequence(:number) { |n| 123 + n }
   end
 
   # most basic inventory

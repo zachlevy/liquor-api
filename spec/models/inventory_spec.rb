@@ -21,6 +21,22 @@ RSpec.describe Inventory, type: :model do
     expect(build(:inventory, :lcbo_updated_on => nil)).not_to be_valid
   end
 
+  it "gets previous inventory" do
+    store = create(:store)
+    product = create(:product)
+    inv1 = create(:inventory, :store => store, :product => product)
+    inv2 = create(:inventory, :store => store, :product => product)
+    expect(inv2.previous).to eq(inv1)
+  end
+
+  it "gets previous inventory regardless of when created" do
+    store = create(:store)
+    product = create(:product)
+    inv1 = create(:inventory, :store => store, :product => product)
+    create(:inventory, :store => store, :product => product, :lcbo_updated_on => "2014-01-01") # junk
+    inv2 = create(:inventory, :store => store, :product => product)
+  end
+
   it "calculates all sales and shipments combinations" do
     store = create(:store)
     product = create(:product)
