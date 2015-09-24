@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  store_class_id: 
+  address: MyString
+  city: MyString
+  postal_code: MyString
+  fax: MyString
+  dead: false
+  lat: 9.99
+  lng: 9.99
+  name: MyString
+  phone: MyString
+  lcbo_updated_at: 2015-09-18 17:41:38
+
+two:
+  number: 1
+  store_class_id: 
+  address: MyString
+  city: MyString
+  postal_code: MyString
+  fax: MyString
+  dead: false
+  lat: 9.99
+  lng: 9.99
+  name: MyString
+  phone: MyString
+  lcbo_updated_at: 2015-09-18 17:41:38
