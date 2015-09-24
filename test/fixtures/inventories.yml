@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 
+  store_id: 
+  quantity: 1
+  sales: 1
+  shipment: 1
+  lcbo_updated_on: 2015-09-18
+  lcbo_updated_at: 2015-09-18 18:13:48
+
+two:
+  product_id: 
+  store_id: 
+  quantity: 1
+  sales: 1
+  shipment: 1
+  lcbo_updated_on: 2015-09-18
+  lcbo_updated_at: 2015-09-18 18:13:48
