@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :inventories, except: [:new, :edit]
-  resources :products, except: [:new, :edit]
+  resources :products, except: [:new, :edit] do
+    collection do
+      get ':id/inventories' => 'products#inventories'
+    end
+  end
   resources :stores, except: [:new, :edit]
   resources :store_classes, except: [:new, :edit]
   # The priority is based upon order of creation: first created -> highest priority.

@@ -2,6 +2,12 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:update, :destroy]
   before_action :set_product_with_fields, only: :show
 
+  def inventories
+    @inventories = Inventory.where(product_id: params[:id])
+
+    render json: @inventories
+  end
+
   # GET /products
   # GET /products.json
   def index
