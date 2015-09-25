@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   require_relative '../helpers/lcbo_api_helper'
   require_relative '../helpers/application_helper'
   has_many :inventories
+  has_many :stores, through: :inventories
 
   validates_uniqueness_of :number
   validates :case_size, presence: true

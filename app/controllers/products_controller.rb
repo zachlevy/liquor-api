@@ -1,11 +1,17 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:update, :destroy]
+  before_action :set_product, only: [:update, :destroy, :stores]
   before_action :set_product_with_fields, only: :show
 
   def inventories
     @inventories = Inventory.where(product_id: params[:id])
 
     render json: @inventories
+  end
+
+  def stores
+    @stores = @product.stores
+
+    render json: @stores
   end
 
   # GET /products

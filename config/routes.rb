@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :products, except: [:new, :edit] do
     collection do
       get ':id/inventories' => 'products#inventories'
+      get ':id/stores' => 'products#stores'
     end
   end
   resources :stores, except: [:new, :edit]

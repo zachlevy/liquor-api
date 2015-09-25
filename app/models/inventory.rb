@@ -9,6 +9,8 @@ class Inventory < ActiveRecord::Base
 
   before_create :calc_sales
 
+  default_scope { order(lcbo_updated_on: :desc) }
+
   # gets the last inventory before the current inventory
   # days ago offsets
   def previous days_ago=0
