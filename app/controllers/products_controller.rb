@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :update, :destroy]
+  before_action :set_product, only: [:update, :destroy]
+  before_action :set_product_with_fields, only: :show
 
   # GET /products
   # GET /products.json
@@ -48,6 +49,17 @@ class ProductsController < ApplicationController
   end
 
   private
+    def select_fields
+      fields = []
+      params[:fields].split(',').each { |field| fields << field.to_sym }
+      fields
+    end
+
+    def set_product_with_fields
+      query = Product
+      query = query.select(select_fields) unless params[:fields].nil?
+      @product = query.find(params[:id])
+    end
 
     def set_product
       @product = Product.find(params[:id])

@@ -1,5 +1,6 @@
 class InventoriesController < ApplicationController
   before_action :set_inventory, only: [:show, :update, :destroy]
+  before_action :set_inventory_with_fields, only: :show
 
   # GET /inventories
   # GET /inventories.json
@@ -48,6 +49,11 @@ class InventoriesController < ApplicationController
   end
 
   private
+    def set_inventory_with_fields
+      query = Inventory
+      query = query.select(select_fields) unless params[:fields].nil?
+      @inventory = query.find(params[:id])
+    end
 
     def set_inventory
       @inventory = Inventory.find(params[:id])

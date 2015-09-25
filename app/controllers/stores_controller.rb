@@ -1,5 +1,6 @@
 class StoresController < ApplicationController
   before_action :set_store, only: [:show, :update, :destroy]
+  before_action :set_store_with_fields, only: :show
 
   # GET /stores
   # GET /stores.json
@@ -48,6 +49,11 @@ class StoresController < ApplicationController
   end
 
   private
+    def set_stores_with_fields
+      query = Store
+      query = query.select(select_fields) unless params[:fields].nil?
+      @store = query.find(params[:id])
+    end
 
     def set_store
       @store = Store.find(params[:id])
