@@ -49,12 +49,6 @@ class ProductsController < ApplicationController
   end
 
   private
-    def select_fields
-      fields = []
-      params[:fields].split(',').each { |field| fields << field.to_sym }
-      fields
-    end
-
     def set_product_with_fields
       query = Product
       query = query.select(select_fields) unless params[:fields].nil?

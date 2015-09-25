@@ -49,7 +49,7 @@ class StoresController < ApplicationController
   end
 
   private
-    def set_stores_with_fields
+    def set_store_with_fields
       query = Store
       query = query.select(select_fields) unless params[:fields].nil?
       @store = query.find(params[:id])
