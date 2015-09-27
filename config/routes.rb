@@ -7,7 +7,11 @@ Rails.application.routes.draw do
       get ':id/stores' => 'products#stores'
     end
   end
-  resources :stores, except: [:new, :edit]
+  resources :stores, except: [:new, :edit] do
+    collection do
+      get ':id/interactions' => 'stores#interactions'
+    end
+  end
   resources :store_classes, except: [:new, :edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
