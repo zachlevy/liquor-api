@@ -29,7 +29,7 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show
-    render json: @store
+    render json: @store, include: [:store_class]
   end
 
   # POST /stores
