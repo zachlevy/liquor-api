@@ -15,13 +15,14 @@ class Product < ActiveRecord::Base
     response.each do |inventory|
       lcbo_updated_on = inventory["updated_on"].to_date
       next if Inventory.exists?(lcbo_updated_on: lcbo_updated_on, store_id: inventory['store_id'], product: self)
-      Inventory.create(
+      i = Inventory.new(
         product: self,
         store_id: inventory['store_id'],
         quantity: inventory["quantity"],
         lcbo_updated_on: lcbo_updated_on,
         lcbo_updated_at: Time.parse(inventory["updated_at"]).getutc
       )
+      i.save if i.valid?
     end
   end
 

@@ -2,8 +2,8 @@ class StoresController < ApplicationController
   before_action :set_store, only: [:show, :update, :destroy]
   before_action :set_store_with_fields, only: :show
 
-  # GET /store/1/interactions
-  # GET /store/1/interactions.json
+  # GET /store/1/inventories
+  # GET /store/1/inventories.json
   def inventories
     @inventories = Inventory.where(store_id: params[:id]).order(lcbo_updated_on: :desc)
 
