@@ -46,9 +46,9 @@ products = Product.create([
     case_size: 24
   },
   {
-    number: ,
+    number: 426973,
     name: "Sage Cranberry Elderflower",
-    case_size: 372078
+    case_size: 12
   }
 ])
 
