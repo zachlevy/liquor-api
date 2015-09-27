@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :stores, except: [:new, :edit] do
     collection do
       get ':id/interactions' => 'stores#interactions'
+      get ':id/inventories' => 'stores#inventories'
     end
   end
   resources :store_classes, except: [:new, :edit]

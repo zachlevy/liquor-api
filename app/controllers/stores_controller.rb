@@ -4,6 +4,14 @@ class StoresController < ApplicationController
 
   # GET /store/1/interactions
   # GET /store/1/interactions.json
+  def inventories
+    @inventories = Inventory.where(store_id: params[:id]).order(lcbo_updated_on: :desc)
+
+    render json: @inventories
+  end
+
+  # GET /store/1/interactions
+  # GET /store/1/interactions.json
   def interactions
     @interactions = Interaction.where(store_id: params[:id]).order(date: :desc)
 
