@@ -39,6 +39,16 @@ products = Product.create([
     number: 407148,
     name: "Crazy Beard Apple Ale",
     case_size: 24
+  },
+  {
+    number: 430041,
+    name: "Crazy Beard Mad Ginger",
+    case_size: 24
+  },
+  {
+    number: ,
+    name: "Sage Cranberry Elderflower",
+    case_size: 372078
   }
 ])
 
