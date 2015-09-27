@@ -1,4 +1,10 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :interaction do
+    product nil
+store nil
+date "2015-09-26"
+comment "MyText"
+  end
+
   # simplest product
   factory :product do
     name "Sage"

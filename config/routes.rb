@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :interactions, except: [:new, :edit]
   resources :inventories, except: [:new, :edit]
   resources :products, except: [:new, :edit] do
     collection do

@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   require_relative '../helpers/application_helper'
   has_many :inventories
   has_many :stores, through: :inventories
+  has_many :interactions
 
   validates_uniqueness_of :number
   validates :case_size, presence: true

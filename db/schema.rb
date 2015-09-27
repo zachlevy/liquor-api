@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918221348) do
+ActiveRecord::Schema.define(version: 20150927005652) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "interactions", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "store_id"
+    t.date     "date"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "interactions", ["product_id"], name: "index_interactions_on_product_id", using: :btree
+  add_index "interactions", ["store_id"], name: "index_interactions_on_store_id", using: :btree
 
   create_table "inventories", force: :cascade do |t|
     t.integer  "product_id"
@@ -25,8 +40,8 @@ ActiveRecord::Schema.define(version: 20150918221348) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "inventories", ["product_id"], name: "index_inventories_on_product_id"
-  add_index "inventories", ["store_id"], name: "index_inventories_on_store_id"
+  add_index "inventories", ["product_id"], name: "index_inventories_on_product_id", using: :btree
+  add_index "inventories", ["store_id"], name: "index_inventories_on_store_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.integer  "number"
@@ -60,6 +75,8 @@ ActiveRecord::Schema.define(version: 20150918221348) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "stores", ["store_class_id"], name: "index_stores_on_store_class_id"
+  add_index "stores", ["store_class_id"], name: "index_stores_on_store_class_id", using: :btree
 
+  add_foreign_key "interactions", "products"
+  add_foreign_key "interactions", "stores"
 end

@@ -2,6 +2,7 @@ class Store < ActiveRecord::Base
   require_relative '../helpers/lcbo_api_helper'
   belongs_to :store_class
   has_many :inventories
+  has_many :interactions
   acts_as_mappable
 
   validates_uniqueness_of :number
